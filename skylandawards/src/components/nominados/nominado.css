@@ -1,0 +1,14 @@
+#main-nom{
+    margin-top: 100px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 200px;
+    font-size: 30px;
+}
+
+.img-nom{
+    width: 220px;
+}

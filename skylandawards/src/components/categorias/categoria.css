@@ -1,0 +1,60 @@
+*{
+    color: whitesmoke;
+}
+
+#main-cat{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.container-nom{
+    place-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1400px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 200px;
+    row-gap: 100px;
+    font-size: 30px;
+}
+
+.img-cat{
+    width: 280px;
+}
+
+.btn-votar{
+    cursor: pointer;
+    width: 280px;
+    color: rgb(8, 36, 20);
+    transition: .5s ease-in-out;
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(144, 144, 144) 100%);
+    border-radius: 12px;
+    transform: skewX(-10deg);
+}
+
+@keyframes activeVote {
+    0% {transform: scale(1) rotateX(0deg) skewX(-10deg);}
+    50% {transform: scale(1.1) rotateX(35deg) skewX(0deg);}
+    100% {transform: scale(1) rotateX(0deg) skewX(-10deg);}
+}
+.btn-activeVote{
+    animation-name: activeVote;
+    animation-duration: .6s;
+    background: linear-gradient(0deg, rgba(223,145,0,1) 20%, rgba(255,203,71,1) 50%, rgba(223,145,0,1) 80%);
+    color: rgb(33, 25, 25);
+}
+button{
+    transform: skewX(10deg);
+    width: 100%;
+    background: none;
+    border: none;
+}
+
+.btn-votar:hover{
+    color: whitesmoke;
+    background: linear-gradient(180deg, rgb(17, 65, 38) 0%, rgb(5, 26, 14) 100%);
+}
+
+

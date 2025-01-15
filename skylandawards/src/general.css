@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "VoltaireFrangela";
+    src: url(./fonts/Voltaire-Frangela.ttf) format('truetype');
+}
+*{
+    font-family: "VoltaireFrangela";
+}
+
+#sidebarBar{
+    display: flex;
+    align-items: center;
+    gap: 56px;
+}
+
+#sidebar{
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 17, 9, .99);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+}
+#sidebar a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+}
+#content{
+    background-image: linear-gradient(black, #022F18);
+}
+
+#userHandler{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    transform: skewX(0deg);
+}
+
+div:has(> #userHandlerItem){
+    padding: 0px;
+}
+
+#userHandlerItem{
+    background: rgb(0, 17, 9);
+}
+
+.modal-login{
+    background: linear-gradient(180deg, #052c2a 0%, #031d13 100%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
