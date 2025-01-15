@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3306
+const PORT = process.env.MYSQLPORT || 3306
 
 const db = require('./config')
 
