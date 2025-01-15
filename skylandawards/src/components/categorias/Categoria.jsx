@@ -162,7 +162,6 @@ const Categoria = () => {
                                 email: usuario.email
                             });
                         }
-                        console.log(usuario)
                         fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
