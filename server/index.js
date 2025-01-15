@@ -146,6 +146,7 @@ app.put('/put/voto', (req, res) => {
 })
 
 
-app.listen(8080, () => {
-    console.log('server listening on port 8080')
+db.getConnection((err, conn) => {
+    if(err) console.log(err)
+    console.log("Conected Succesfully")
 })
