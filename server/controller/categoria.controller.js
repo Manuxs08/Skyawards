@@ -1,8 +1,8 @@
-const pool = require("../database/index")
+const con = require("../database/index")
 const categoriaController = {
     getAll: async (req, res) => {
         try {
-            const [rows, fields] = await pool.query("SELECT * FROM categorias")
+            const [rows, fields] = await con.query("SELECT * FROM categorias")
             res.json({
                 data: rows
             })

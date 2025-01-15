@@ -10,7 +10,7 @@ app.use(express.json);
 
 app.use("/get/categoria", categoriaRouter)
 
-const PORT = process.env.PORT || 16696
+const PORT = process.env.PORT || 3306
 
 app.listen(PORT, () => {
     console.log('Server running...')

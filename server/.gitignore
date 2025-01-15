@@ -1,8 +1,2 @@
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debugs.logs
-yarn-debug.logs
-yarn-error.logs
+/node_modules
+.env
