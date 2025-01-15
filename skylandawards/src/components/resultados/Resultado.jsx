@@ -13,7 +13,7 @@ import GraficoResultado from '../graficoResultado/graficoResultado'
 const Resultado = () => {
     const [votosCant, setVotosCant] = useState([]);
     const [nominadosNombres, setNominadosNombres] = useState([]);
-    const url = 'overflowing-liberation-production.up.railway.app';
+    const url = 'https://overflowing-liberation-production.up.railway.app';
     const [categorias, setCategorias] = useState([]);
     const [nomCategoria, setNomCategoria] = useState([]);
     const [user, setUser] = useState({
