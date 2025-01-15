@@ -18,10 +18,6 @@ const db = mysql.createPool({
     queueLimit: 0
 })
 
-app.use("/", (req, res) => {
-    res.send("Server is running")
-})
-
 app.get('/get/nominados', (req, res) => {
     const sql = "SELECT * FROM nominados";
     db.query(sql, (err, result) => {
