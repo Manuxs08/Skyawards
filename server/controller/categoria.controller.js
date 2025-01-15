@@ -1,4 +1,4 @@
-const con = require("../database/index")
+const con = require("../config")
 const categoriaController = {
     getAll: async (req, res) => {
         try {
