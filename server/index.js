@@ -16,6 +16,10 @@ const db = mysql.createPool({
     database: 'skyawards'
 })
 
+app.use("/", (req, res) => {
+    res.send("Server is running")
+})
+
 app.get('/get/nominados', (req, res) => {
     const sql = "SELECT * FROM nominados";
     db.query(sql, (err, result) => {
