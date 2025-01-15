@@ -13,7 +13,7 @@ import GraficoResultado from '../graficoResultado/graficoResultado'
 const Resultado = () => {
     const [votosCant, setVotosCant] = useState([]);
     const [nominadosNombres, setNominadosNombres] = useState([]);
-    const url = 'http://localhost:8080';
+    const url = 'https://skyawards-server.vercel.app';
     const [categorias, setCategorias] = useState([]);
     const [nomCategoria, setNomCategoria] = useState([]);
     const [user, setUser] = useState({

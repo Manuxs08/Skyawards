@@ -12,7 +12,6 @@ const Inicio = () => {
   const fechaDia = new Date().getDate();
   const fechaMes = new Date().getMonth();
   const fechaAnio = new Date().getFullYear();
-  const url = 'http://localhost:8080';
   const [user, setUser] = useState({
     id: '',
     icon: '',

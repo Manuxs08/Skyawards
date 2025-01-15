@@ -13,7 +13,7 @@ const Nominado = () => {
     const fechaDia = new Date().getDate();
     const fechaMes = new Date().getMonth();
     const fechaAnio = new Date().getFullYear();
-    const url = 'http://localhost:8080';
+    const url = 'https://skyawards-server.vercel.app';
     const [nominados, setNominados] = useState([])
     const [nominaciones, setNominaciones] = useState([])
     const [user, setUser] = useState({
