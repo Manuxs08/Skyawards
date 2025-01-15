@@ -164,8 +164,8 @@ const Categoria = () => {
                         }
                         console.log(usuario)
                         fetchVotos(usuario.id)
-                        console.log(votos)
-                        votos.map((voto)=>{
+                        const votosArr = Array.of(votos)
+                        votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
                         })
                     } catch (error) {
@@ -224,7 +224,7 @@ const Categoria = () => {
             <br />
             <div style={{marginBottom:'40px', fontSize:'30px'}}>Aqui podras votar a criterio propio en cada una de las categorias seleccionadas</div>
             <div>
-                {categorias.map((cat)=>
+                {Array.of(categorias).map((cat)=>
                     <div className='categoria'>
                         <h1 style={{
                             marginTop:'40px',
@@ -233,7 +233,7 @@ const Categoria = () => {
                         }}>{cat.nombre}</h1>
                         <div className='container-nom'>
                                 {
-                                    nomCategoria.map((nom)=>{
+                                    Array.of(nomCategoria).map((nom)=>{
                                         if(nom.idCategoria == cat.id){
                                             if(cat.id == 9){
                                                 return(
