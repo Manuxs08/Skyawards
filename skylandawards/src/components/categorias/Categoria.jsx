@@ -13,7 +13,7 @@ const Categoria = () => {
     const fechaDia = new Date().getDate();
     const fechaMes = new Date().getMonth();
     const fechaAnio = new Date().getFullYear();
-    const url = 'https://skyawards-server.vercel.app';
+    const url = 'overflowing-liberation-production.up.railway.app';
     const [nomCategoria, setNomCategoria] = useState([]);
     const [categorias, setCategorias] = useState([]);
     const [user, setUser] = useState({
