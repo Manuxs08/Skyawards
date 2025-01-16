@@ -80,7 +80,7 @@ const Inicio = () => {
         </Modal>
         </div>
         <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="../../assets/images/skyawards-logo.png" alt="" id='logo' /></a>
+          <a href="/" style={{marginLeft:'50px'}}><img src="/src/assets/images/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
             <h3><a href="/categoria">Categorias</a></h3>
             <h3><a href="/nominado">Nominados</a></h3>
