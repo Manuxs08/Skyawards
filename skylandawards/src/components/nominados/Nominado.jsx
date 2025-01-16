@@ -55,7 +55,8 @@ const Nominado = () => {
     const fetchNominadosCount = async () => {
       const nominaciones = []
       await axios.get(url+'/get/nominados').then(res => {
-        const noms = Array.of(res.data);
+        const noms = res.data;
+        console.log(noms)
         noms.map(async (nom)=>{
             await axios.get(url+'/get/nominados/count',{
                 params:{
@@ -143,8 +144,8 @@ const Nominado = () => {
           </div>
         </div><br /><br /><br />
         <div id='main-nom' style={{marginLeft:'40px',marginRight:'40px'}}>
-            {Array.of(nominados).map((nominado, index) =>
-                <div style={{
+            {nominados.map((nominado, index) =>
+                <div key={`nom${index}`} style={{
                     display:'flex',
                     flexDirection:'column',
                     alignItems:'center'
