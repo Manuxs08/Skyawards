@@ -128,8 +128,7 @@ const Categoria = () => {
 
     const fetchCategorias = async () => {
         await axios.get(url+'/get/categorias').then(res => {
-            setCategorias(res.data);
-            console.log(res.data)})
+            setCategorias(res.data);})
         .catch(err => console.log(err))
     };
 
