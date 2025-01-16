@@ -88,7 +88,7 @@ const Nominado = () => {
               }else{
                   setUser({
                       id: usuario.id,
-                      icon: 'src/assets/icons/emailIcon.svg',
+                      icon: '/emailIcon.svg',
                       email: usuario.email
                   })
               }
@@ -114,7 +114,7 @@ const Nominado = () => {
         </Modal>
         </div>
         <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="src/assets/images/skyawards-logo.png" alt="" id='logo' /></a>
+          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
             <h3><a href="/categoria">Categorias</a></h3>
             <h3><a href="/resultado">Nominados</a></h3>
@@ -138,7 +138,7 @@ const Nominado = () => {
                 width:'64px',
                 color:'whitesmoke',
                 borderRadius:'9999px'
-            }} src="src/assets/icons/userIcon.svg" alt="" />}>
+            }} src="/userIcon.svg" alt="" />}>
                 <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
             </DropdownButton>}
           </div>
@@ -150,7 +150,7 @@ const Nominado = () => {
                     flexDirection:'column',
                     alignItems:'center'
                 }}>
-                    <img className='img-nom' src={`src/assets/images/${nominado.imagen}`} alt={nominado.imagen} />
+                    <img className='img-nom' src={`/${nominado.imagen}`} alt={nominado.imagen} />
                     <h1>{nominado.nombre}</h1>
                     <h2>{nominaciones[index] != undefined ? `${nominaciones[index]} nominaciones` : 'cargando...'}</h2>
                 </div>

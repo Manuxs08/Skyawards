@@ -190,7 +190,7 @@ const Categoria = () => {
         </Modal>
         </div>
         <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="src/assets/images/skyawards-logo.png" alt="" id='logo' /></a>
+          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
             <h3><a href="/categoria">Categorias</a></h3>
             <h3><a href="/nominado">Nominados</a></h3>
@@ -214,7 +214,7 @@ const Categoria = () => {
                 width:'64px',
                 color:'whitesmoke',
                 borderRadius:'9999px'
-            }} src="src/assets/icons/userIcon.svg" alt="" />}>
+            }} src="/userIcon.svg" alt="" />}>
                 <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
             </DropdownButton>}
           </div>
@@ -243,7 +243,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h3>{nom.nombre}</h3>
-                                                        <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'src/assets/images/'+nom.imagen} alt={nom.imagen} />
+                                                        <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`}><button onClick={() => handleVote(cat.id, nom)}>Votar</button></div>
                                                     </div>);
                                             }else{
@@ -255,7 +255,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h3>{nom.nombre}</h3>
-                                                        <img className='img-cat' src={'src/assets/images/'+nom.imagen} alt={nom.imagen} />
+                                                        <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }

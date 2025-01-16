@@ -56,7 +56,7 @@ const Inicio = () => {
               }else{
                   setUser({
                       id: usuario.id,
-                      icon: 'src/assets/icons/emailIcon.svg',
+                      icon: '/emailIcon.svg',
                       email: usuario.email
                   });
               }
@@ -103,14 +103,14 @@ const Inicio = () => {
             title={<img style={{
                 width:'64px',
                 color:'whitesmoke',
-            }} src="src/assets/icons/userIcon.svg" alt="" />}>
+            }} src="/userIcon.svg" alt="" />}>
                 <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
             </DropdownButton>}
           </div>
         </div>
         <div id='main-inicio'>
             <br />
-            <img id='img-trofeo' style={{width:'256px'}} src="src/assets/images/trofeo.png" alt="" /><br /><br />
+            <img id='img-trofeo' style={{width:'256px'}} src="/trofeo.png" alt="" /><br /><br />
             <h1 style={{fontSize:'70px', marginBottom:'64px'}}>Bienvenido a los Skyland Awards</h1>
             <p style={{
                 fontSize:'24px',
@@ -142,13 +142,13 @@ const Inicio = () => {
               </div>
               <div id='slider'>
                 <div id='slider-track'>
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio1.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio2.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio3.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio4.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio5.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio6.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="src/assets/images/inicio7.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio1.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio2.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio3.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio4.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio5.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio6.jpg" alt="" />
+                  <img style={{aspectRatio:'16 / 9'}} src="/inicio7.jpg" alt="" />
                 </div>
               </div>
             </div>

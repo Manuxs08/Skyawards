@@ -113,7 +113,7 @@ const Resultado = () => {
                         }else{
                             setUser({
                                 id: usuario.id,
-                                icon: 'src/assets/icons/emailIcon.svg',
+                                icon: '/emailIcon.svg',
                                 email: usuario.email
                             });
                         }
@@ -141,7 +141,7 @@ const Resultado = () => {
         </Modal>
         </div>
         <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="src/assets/images/skyawards-logo.png" alt="" id='logo' /></a>
+          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
             <h3><a href="/categoria">Categorias</a></h3>
             <h3><a href="/nominado">Nominados</a></h3>
@@ -161,7 +161,7 @@ const Resultado = () => {
                 width:'64px',
                 color:'whitesmoke',
                 borderRadius:'9999px'
-            }} src="src/assets/icons/userIcon.svg" alt="" />}>
+            }} src="/userIcon.svg" alt="" />}>
                 <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
             </DropdownButton>}
           </div>
