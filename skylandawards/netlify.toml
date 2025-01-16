@@ -1,0 +1,4 @@
+[buid]
+base = "skyawards"
+publish = "build"
+command = "CI=false npm run build"
