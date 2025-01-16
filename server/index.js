@@ -66,7 +66,7 @@ app.get('/get/categoria/nominados/count', (req, res) => {
 })
 
 app.get('/get/usuario/:idVotante', (req, res) => {
-    const sql = "SELECT * FROM `users` WHERE `id` = ?";
+    const sql = "SELECT * FROM `usuarios` WHERE `idUser` = ?";
     const id = req.params.idVotante
     db.query(sql, id, (err, result) => {
         if(err){return res.json(err)};
@@ -75,7 +75,7 @@ app.get('/get/usuario/:idVotante', (req, res) => {
 })
 
 app.post('/post/usuario', (req, res) => {
-    const sql = "INSERT INTO `users`(`id`, `email`, `icon`) VALUES (?)";
+    const sql = "INSERT INTO `usuarios`(`idUser`, `email`, `icon`) VALUES (?)";
     const values = [
         req.body.id,
         req.body.email,
