@@ -128,7 +128,8 @@ const Categoria = () => {
 
     const fetchCategorias = async () => {
         await axios.get(url+'/get/categorias').then(res => {
-            setCategorias(res.data);})
+            setCategorias(res.data);
+            console.log(res.data)})
         .catch(err => console.log(err))
     };
 
@@ -223,20 +224,20 @@ const Categoria = () => {
             <br />
             <div style={{marginBottom:'40px', fontSize:'30px'}}>Aqui podras votar a criterio propio en cada una de las categorias seleccionadas</div>
             <div>
-                {Array.of(categorias).map((cat)=>
+                {categorias.map((cat, index)=>
                     <div className='categoria'>
-                        <h1 style={{
+                        <h1 key={`categoria${index}`} style={{
                             marginTop:'40px',
                             marginBottom:'40px',
                             fontSize:'72px'
                         }}>{cat.nombre}</h1>
                         <div className='container-nom'>
                                 {
-                                    Array.of(nomCategoria).map((nom)=>{
+                                    nomCategoria.map((nom, index)=>{
                                         if(nom.idCategoria == cat.id){
                                             if(cat.id == 9){
                                                 return(
-                                                    <div style={{
+                                                    <div key={`nomCat${index}`} style={{
                                                         display:'flex',
                                                         flexDirection:'column',
                                                         justifyContent:'center',
@@ -248,7 +249,7 @@ const Categoria = () => {
                                                     </div>);
                                             }else{
                                                 return(
-                                                    <div style={{
+                                                    <div key={`nomCat${index}`} style={{
                                                         display:'flex',
                                                         flexDirection:'column',
                                                         justifyContent:'center',
