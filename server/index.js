@@ -13,13 +13,7 @@ const PORT = process.env.PORTDB || 3306
 
 const db = require('./config')
 
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin','https://skyawards-client.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', false);
-    next();
-})
+app.use(cors({origin:'https://skyawards-client.vercel.app'}))
 
 app.get('/get/nominados', (req, res) => {
     const sql = "SELECT * FROM nominados";
