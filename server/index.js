@@ -38,9 +38,13 @@ app.get('/get/categorias', async (req, res) => {
     try {
         const [results, fields] = await db.query(
             "SELECT * FROM categorias"
-        )
-        console.log(results);
-        console.log(fields);
+        );
+        if(results.length > 0){
+            res.status(200).send("Consulta realizada con exito");
+            return res.json(results);
+        }else{
+            res.status(401).send("Consulta fallida")
+        }
     } catch (error) {
         console.log(error)
     }
