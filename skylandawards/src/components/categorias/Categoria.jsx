@@ -61,7 +61,7 @@ const Categoria = () => {
         new Audio(audioSource).play();
     }
 
-    const updateBtnVote = (catID, nomID) => {
+    const updateBtnVote = async (catID, nomID) => {
         const btnsActiveVotes = document.getElementsByClassName(` btn-activeVote cat${catID}`);
         const btnVotar = document.getElementById(`btn${nomID}`);
 
@@ -171,6 +171,7 @@ const Categoria = () => {
                                 email: usuario.email
                             });
                         }
+                        console.log(usuario)
                         fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
@@ -250,7 +251,7 @@ const Categoria = () => {
                                                     }}>
                                                         <h3>{nom.nombre}</h3>
                                                         <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
-                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`}><button onClick={() => handleVote(cat.id, nom)}>Votar</button></div>
+                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }else{
                                                 return(
