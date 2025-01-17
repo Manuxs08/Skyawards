@@ -1,7 +1,6 @@
 {
   "name": "skylandawards",
   "private": true,
-  "proxy":"https://skyawards-client.vercel.app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
