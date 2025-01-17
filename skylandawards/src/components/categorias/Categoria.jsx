@@ -150,6 +150,9 @@ const Categoria = () => {
     }
 
     useEffect(()=>{
+        fetchCategorias();
+        fetchNominadosCategoria();
+        showResults();
         async function getUserData(){
             await supabase.auth.getUser().then((value) => {
                 if (value.data?.user) {
@@ -180,9 +183,6 @@ const Categoria = () => {
             })
         }
         getUserData();
-        fetchCategorias();
-        fetchNominadosCategoria();
-        showResults();
     },[])
 
   return (
