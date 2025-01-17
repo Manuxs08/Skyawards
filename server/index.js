@@ -16,7 +16,19 @@ const PORT = process.env.PORTDB || 3306
 
 const db = require('./config')
 
-app.get('/get/nominados', (req, res) => {
+app.get('/get/nominados', async (req, res) => {
+    try {
+        const [results, fields] = await db.query(
+            "SELECT * FROM nominados"
+        );
+        if(results.length > 0){
+            return res.status(200).json(results)
+        }else{
+            res.status(401).send("Consulta fallida")
+        }
+    } catch (error) {
+        console.log(error)
+    }
     const sql = "SELECT * FROM nominados";
     db.query(sql, (err, result) => {
         if(err){return res.json(err)};
@@ -24,14 +36,21 @@ app.get('/get/nominados', (req, res) => {
     })
 })
 
-app.get('/get/nominados/count', (req, res) => {
-    const sql = "SELECT COUNT(*) as nominaciones FROM `nominadoscategoria` WHERE `idNominado1` = ? OR `idNominado2` = ?;";
-    const idNom1 = req.query.idNom1;
-    const idNom2 = req.query.idNom2;
-    db.query(sql, [idNom1, idNom2],(err, result) => {
-        if(err){return res.json(err)};
-        return res.json(result);
-    })
+app.get('/get/nominados/count', async (req, res) => {
+    const data = req.query;
+    try {
+        const [results, fields] = await db.query(
+            "SELECT COUNT(*) as nominaciones FROM `nominadoscategoria` WHERE `idNominado1` = ? OR `idNominado2` = ?",
+            [data.idNom1, data.idNom2]
+        );
+        if(results.length > 0){
+            return res.status(200).json(results)
+        }else{
+            res.status(401).send("Consulta fallida")
+        }
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.get('/get/categorias', async (req, res) => {
