@@ -117,8 +117,8 @@ app.get('/get/categoria/nominados/count', async (req, res) => {
     }
 })
 
-app.get('/get/usuario/:idVotante', async (req, res) => {
-    const id = req.params.idVotante
+app.get('/get/usuario', async (req, res) => {
+    const id = req.query.idVotante
     try {
         const [results, fields] = await db.query(
             "SELECT * FROM `usuarios` WHERE `id` = ?",

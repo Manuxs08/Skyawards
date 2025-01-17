@@ -117,7 +117,7 @@ const Nominado = () => {
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
             <h3><a href="/categoria">Categorias</a></h3>
-            <h3><a href="/resultado">Nominados</a></h3>
+            <h3><a href="/nominado">Nominados</a></h3>
             {result?
               <h3><a href="/resultado">Resultados</a></h3>:
               null

@@ -81,7 +81,11 @@ const Categoria = () => {
                 idNomCategoria: nom.id
             }
             //Comprobar si el usuario ya esta registrado en la base de datos
-            await axios.get(url+`/get/usuario/${voto}`).then(res => {
+            await axios.get((url+'/get/usuario'),{
+                params:{
+                    idVotante:voto.idVotante
+                }
+            }).then(res => {
                 if(res.data.length == 0){
                     axios.post((url+'/post/usuario'), user)
                     .then(res => console.log(res))
