@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'https://skyawards-client.vercel.app',
+    origin: ['https://skyawards-client.vercel.app','https://skyawards-client.vercel.app/categoria'],
     credentials: true
 }
 ));
