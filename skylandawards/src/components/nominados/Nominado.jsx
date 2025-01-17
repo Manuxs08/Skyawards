@@ -152,7 +152,7 @@ const Nominado = () => {
                 }}>
                     <img className='img-nom' src={`/${nominado.imagen}`} alt={nominado.imagen} />
                     <h1>{nominado.nombre}</h1>
-                    <h2>{nominaciones[index] != undefined ? `${nominaciones[index]} nominaciones` : 'cargando...'}</h2>
+                    <h2>{nominaciones[index] != undefined ? `${nominaciones[index]} nominaciones` : ''}</h2>
                 </div>
             )}
         </div><br /><br /><br />
