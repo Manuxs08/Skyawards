@@ -41,7 +41,7 @@ app.get('/get/categorias', async (req, res) => {
         );
         if(results.length > 0){
             res.status(200).send("Consulta realizada con exito");
-            return res.json(results);
+            return res.status(200).json(results)
         }else{
             res.status(401).send("Consulta fallida")
         }
