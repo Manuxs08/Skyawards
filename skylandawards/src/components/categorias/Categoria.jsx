@@ -103,18 +103,17 @@ const Categoria = () => {
                     idCategoria:voto.idCategoria
                 }
             }).then(res => {
-                if(res.data.length == 0){
-                    axios.post(url+'/post/voto', voto)
-                    .then(res => console.log(res))
-                    .catch(err => console.log(err))
-                }else{
-                    axios.put(url+'/put/voto', voto)
-                    .then(res => console.log(res))
-                    .catch(err => console.log(err))
-                }
+                axios.put(url+'/put/voto', voto)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
                 updateBtnVote(catID, nom.id);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                axios.post(url+'/post/voto', voto)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+                updateBtnVote(catID, nom.id);
+            })
         }else openModal();
     }
 
