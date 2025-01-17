@@ -62,13 +62,15 @@ const Categoria = () => {
     }
 
     const updateBtnVote = (catID, nomID) => {
-        const btnsActiveVotes = document.getElementsByClassName(`btn-activeVote cat${catID}`);
+        const btnsActiveVotes = document.getElementsByClassName(` btn-activeVote cat${catID}`);
         const btnVotar = document.getElementById(`btn${nomID}`);
 
-        for (let i = 0; i < btnsActiveVotes.length; i++) {
-            btnsActiveVotes[i].classList.remove('btn-activeVote');
+        if(btnsActiveVotes.length > 0){
+            for (let i = 0; i < btnsActiveVotes.length; i++) {
+                btnsActiveVotes[i].className = btnsActiveVotes[i].className.replace(" btn-activeVote", "");
+            }
         }
-        btnVotar.classList.add('btn-activeVote');
+        btnVotar.className += " btn-activeVote";
     }
 
     const handleVote = async (catID, nom) => {
