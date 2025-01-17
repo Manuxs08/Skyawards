@@ -88,6 +88,7 @@ const Categoria = () => {
                     idVotante:voto.idVotante
                 }
             }).then(res => {
+                console.log(res.data)
                 if(res.data.length == 0){
                     axios.post((url+'/post/usuario'), user)
                     .then(res => console.log(res))
@@ -145,7 +146,7 @@ const Categoria = () => {
             }
         }).then(res => {
             setVotos(res.data);
-            console.log(votos)})
+            console.log(res.data)})
         .catch(err => console.log(err))
     }
 
