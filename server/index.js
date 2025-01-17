@@ -34,12 +34,16 @@ app.get('/get/nominados/count', (req, res) => {
     })
 })
 
-app.get('/get/categorias', (req, res) => {
-    const sql = "SELECT * FROM categorias";
-    db.query(sql, (err, result) => {
-        if(err){return res.json(err)};
-        return res.json(result);
-    })
+app.get('/get/categorias', async (req, res) => {
+    try {
+        const [results, fields] = await db.query(
+            "SELECT * FROM categorias"
+        )
+        console.log(results);
+        console.log(fields);
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.get('/get/categoria/nominados', (req, res) => {
