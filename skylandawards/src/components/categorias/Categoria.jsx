@@ -89,13 +89,12 @@ const Categoria = () => {
                 }
             }).then(res => {
                 console.log(res.data)
-                if(res.data.length == 0){
-                    axios.post((url+'/post/usuario'), user)
-                    .then(res => console.log(res))
-                    .catch(err => console.log(err))
-                }else(console.log('el usuario ya esta registrado'))
                 })
-            .catch(err => console.log(err))
+            .catch(err => {
+                axios.post((url+'/post/usuario'), user)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+            })
 
             //Comprobar si el voto ya fue registrado
             await axios.get((url+'/get/voto'),{
