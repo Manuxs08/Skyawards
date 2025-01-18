@@ -40,22 +40,22 @@ const Categoria = () => {
     }
     
     const playAudio = (id) => {
-        let audioSource = 'src/assets/sounds/';
+        let audioSource;
         switch(id){
             case 45: //ZYDER
-                audioSource += 'amongus.mp3'
+                audioSource = '/amongus.mp3'
             break;
             case 46: //MEMO
-                audioSource += 'apestate.mp3'
+                audioSource = '/apestate.mp3'
             break;
             case 47: //KUSER
-                audioSource += 'vaquitas.mp3'
+                audioSource = '/vaquitas.mp3'
             break;
             case 48: //MYLO
-                audioSource += 'chupa.mp3'
+                audioSource = '/chupa.mp3'
             break;
             case 49: //MANUXS
-                audioSource += 'beyaco.mp3'
+                audioSource = '/beyaco.mp3'
             break;
         }
         new Audio(audioSource).play();
@@ -88,7 +88,7 @@ const Categoria = () => {
                     idVotante:voto.idVotante
                 }
             }).then(res => {
-                console.log(res.data)
+                console.log('Usuario ya registrado')
                 })
             .catch(err => {
                 axios.post((url+'/post/usuario'), user)
@@ -166,11 +166,10 @@ const Categoria = () => {
                         }else{
                             setUser({
                                 id: usuario.id,
-                                icon: 'src/assets/icons/emailIcon.svg',
+                                icon: '/emailIcon.svg',
                                 email: usuario.email
                             });
                         }
-                        console.log(usuario)
                         fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
@@ -248,7 +247,7 @@ const Categoria = () => {
                                                         justifyContent:'center',
                                                         alignItems:'center'
                                                     }}>
-                                                        <h3>{nom.nombre}</h3>
+                                                        <h2>{nom.nombre}</h2>
                                                         <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
@@ -260,7 +259,7 @@ const Categoria = () => {
                                                         justifyContent:'center',
                                                         alignItems:'center'
                                                     }}>
-                                                        <h3>{nom.nombre}</h3>
+                                                        <h2>{nom.nombre}</h2>
                                                         <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
