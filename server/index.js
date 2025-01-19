@@ -189,6 +189,23 @@ app.get('/get/voto', async (req, res) => {
     }
 })
 
+app.get('/get/voto/nomCat', async (req, res) => {
+    const data = req.query;
+    try {
+        const [results, fields] = await db.query(
+            "SELECT * FROM `votos` WHERE `idVotante` = ? AND `idNomCategoria` = ?",
+            [data.idVotante, data.idNomCategoria]
+        );
+        if(results.length > 0){
+            return res.status(200).json(results)
+        }else{
+            res.status(401).send("Consulta fallida")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.post('/post/voto', async (req, res) => {
     const data = [
         req.body.idVotante,
