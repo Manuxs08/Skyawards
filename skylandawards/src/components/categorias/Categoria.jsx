@@ -107,15 +107,14 @@ const Categoria = () => {
                 axios.put(url+'/put/voto', voto)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
-                getVotosNomCat();
-                /*updateBtnVote(catID, nom.id);*/
+                updateBtnVote(catID, nom.id);
             })
             .catch(err => {
                 axios.post(url+'/post/voto', voto)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
                 getVotosNomCat();
-                /*updateBtnVote(catID, nom.id);*/
+                updateBtnVote(catID, nom.id);
             })
         }else openModal();
     }
@@ -163,7 +162,6 @@ const Categoria = () => {
                             arr[cat.id][nomCat.id] = 'btn-activeVote';
                         }).catch(err => {
                             arr[cat.id][nomCat.id] = '';
-                            console.log('BEYACO');
                         })
                     })
                 }).catch(err => console.log(err))
@@ -206,7 +204,6 @@ const Categoria = () => {
                             });
                         }
                         fetchVotos(usuario.id)
-                        getVotosNomCat(usuario.id);
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
