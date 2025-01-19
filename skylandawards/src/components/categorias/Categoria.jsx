@@ -113,7 +113,6 @@ const Categoria = () => {
                 axios.post(url+'/post/voto', voto)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
-                getVotosNomCat();
                 updateBtnVote(catID, nom.id);
             })
         }else openModal();
