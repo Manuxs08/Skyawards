@@ -80,7 +80,7 @@ const Categoria = () => {
         new Promise(resolve => {
             const getElement = () => {
                 const element = document.getElementById(id);
-                if(elements){
+                if(element){
                     resolve(element)
                 }else{
                     requestAnimationFrame(getElement)
@@ -92,7 +92,9 @@ const Categoria = () => {
 
     const updateBtnVote = async (catID, nomID) => {
         const btnsActiveVotes = getElementsByClassNameAsync(`btn-activeVote cat${catID}`);
+        console.log(btnsActiveVotes)
         const btnVotar = getElementByIdAsync(`btn${nomID}`);
+        console.log(btnVotar)
 
         if(btnsActiveVotes.length > 0){
             for (let i = 0; i < btnsActiveVotes.length; i++) {
@@ -204,7 +206,8 @@ const Categoria = () => {
                 id: usuarioID
             }
         }).then(res => {
-            setVotos(res.data);})
+            setVotos(res.data);
+        console.log(votos)})
         .catch(err => console.log(err))
     }
 
