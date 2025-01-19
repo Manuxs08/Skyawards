@@ -140,7 +140,7 @@ const Categoria = () => {
         .catch(err => console.log(err))
     };
 
-    const viewImage = (img) => {
+    const viewImage = async (img) => {
         setShowImage(true);
         setImage(img);
     }
