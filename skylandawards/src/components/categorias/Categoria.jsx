@@ -238,14 +238,6 @@ const Categoria = () => {
             </Modal.Body>
         </Modal>
         </div>
-        <div>
-            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
-            <Modal.Header closeButton className='modal-login'></Modal.Header>
-            <Modal.Body className='modal-login'>
-                <img src={image} alt="" />
-            </Modal.Body>
-            </Modal>
-        </div>
         <div id='sidebar'>
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
