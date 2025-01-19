@@ -143,7 +143,7 @@ const Categoria = () => {
     const getVotosNomCat = async () => {
         await axios.get(url+'/get/categorias').then(res=> {
             const arr = [];
-            const arrCat = Array.of(res.data);
+            const arrCat = res.data;
             console.log(arrCat);
             arrCat.map((cat) => {
                 axios.get((url+'/get/categorias/nominados/idCat'),{
@@ -151,7 +151,7 @@ const Categoria = () => {
                         idCategoria: cat.id
                     }
                 }).then(res=>{
-                    const arrNomsCat = Array.of(res.data);
+                    const arrNomsCat = res.data;
                     console.log(arrNomsCat);
                     arrNomsCat.map((nomCat) => {
                         axios.get((url+'/get/voto/nomCat'),{
