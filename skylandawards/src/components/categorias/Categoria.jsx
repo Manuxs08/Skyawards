@@ -162,7 +162,7 @@ const Categoria = () => {
                         }).then(res => {
                             arr[cat.id][nomCat.id] = 'btn-activeVote';
                         }).catch(err => {
-                            arr[cat.id][nomCat.id] = '';
+                            return arr[cat.id][nomCat.id] = '';
                         })
                     })
                 }).catch(err => console.log(err))
