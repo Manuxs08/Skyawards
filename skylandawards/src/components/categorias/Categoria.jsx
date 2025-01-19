@@ -60,7 +60,7 @@ const Categoria = () => {
     })
 
     const showResults = () => {
-        if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 22){
+        if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 24){
           setResult(true);
         }
     }
@@ -100,6 +100,9 @@ const Categoria = () => {
     }
 
     const handleVote = async (catID, nom) => {
+        if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 24){
+            return alert("Las votaciones han finalizado. Ya no puedes votar")
+          }
         if(isLogged){
             const voto = {
                 idVotante: user.id,
@@ -166,10 +169,8 @@ const Categoria = () => {
     };
     
     const viewImage = async (img) => {
-        openImage()
-        const changeImg = () => {
-            setImage(img);
-        }
+        openImage();
+        setImage(img);
     }
 
     const getVotosNomCat = async (id) => {
@@ -260,6 +261,15 @@ const Categoria = () => {
             </Modal.Body>
         </Modal>
         </div>
+        <Modal dialogClassName='imageModal' show={showImage} onHide={() => setShowImage(false)} centered>
+            <Modal.Body className='modal-login' style={{
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center'
+            }}>
+                <img style={{width:'70%'}} src={'/modalImages/'+image} alt="" />
+            </Modal.Body>
+        </Modal>
         <div id='sidebar'>
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
@@ -293,10 +303,10 @@ const Categoria = () => {
         <div id='main-cat'>
             <br />
             <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} style={{marginBottom:'40px', fontSize:'30px'}}>Aqui podras votar a criterio propio en cada una de las categorias seleccionadas</motion.div>
-            <motion.div variants={gridContainerVariants}>
+            <div>
                 {categorias.map((cat, index)=>
-                    <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} className='categoria'>
-                        <h1 key={`categoria${index}`} style={{
+                    <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} key={`categoria${index}`} className='categoria'>
+                        <h1 style={{
                             marginTop:'40px',
                             marginBottom:'40px',
                             fontSize:'72px'
@@ -326,7 +336,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
-                                                        <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
+                                                        <img onClick={() => viewImage(nom.imagen)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </motion.div>);
                                             }
@@ -336,7 +346,7 @@ const Categoria = () => {
                         </div><br /><br />
                     </motion.div>
                 )}
-            </motion.div>
+            </div>
         </div><br />
     </div>
   )

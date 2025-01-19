@@ -56,7 +56,7 @@ const Nominado = () => {
     })
 
     const showResults = () => {
-      if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 22){
+      if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 24){
         setResult(true);
       }
     }

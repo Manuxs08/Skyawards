@@ -58,4 +58,8 @@ button{
     background: linear-gradient(180deg, rgb(17, 65, 38) 0%, rgb(5, 26, 14) 100%);
 }
 
+.imageModal{
+    max-width: 800px !important;
+}
+
 
