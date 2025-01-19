@@ -163,7 +163,7 @@ const Categoria = () => {
                             arr[cat.id][nomCat.id] = 'btn-activeVote';
                         }).catch(err => {
                             arr[cat.id][nomCat.id] = '';
-                            console.log(err);
+                            console.log('BEYACO');
                         })
                     })
                 }).catch(err => console.log(err))
