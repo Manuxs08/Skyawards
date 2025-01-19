@@ -22,14 +22,11 @@ const Categoria = () => {
         email: ''
     });
     const [result, setResult] = useState(false)
-    const [votos, setVotos] = useState([
+    const [votos, setVotos] = useState([]);
+    const [nomsCat, setNomsCat] = useState([
         [0,1,2,3],
         [4,5,6,7]
-    ],
-    [
-        [2,3,3,4]
     ]);
-    const [nomsCat, setNomsCat] = useState([]);
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
     
