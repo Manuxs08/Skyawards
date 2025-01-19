@@ -123,6 +123,8 @@ const Categoria = () => {
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
 
+    const openImage = () => setShowImage(true)
+
     const signOutUser = async () => {
         const {error} = await supabase.auth.signOut();
         window.location.reload();
@@ -141,8 +143,17 @@ const Categoria = () => {
     };
 
     const viewImage = async (img) => {
-        setShowImage(true);
-        setImage(img);
+        openImage()
+        return(
+            <div>
+            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
+            <Modal.Header closeButton className='modal-login'></Modal.Header>
+            <Modal.Body className='modal-login'>
+                <img src={img} alt="" />
+            </Modal.Body>
+            </Modal>
+            </div>
+        )
     }
 
     const getVotosNomCat = async (id) => {
@@ -233,14 +244,6 @@ const Categoria = () => {
                 <Login supabase={supabase}></Login>
             </Modal.Body>
         </Modal>
-        </div>
-        <div>
-            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
-            <Modal.Header closeButton className='modal-login'></Modal.Header>
-            <Modal.Body className='modal-login'>
-                <img src={image} alt="" />
-            </Modal.Body>
-            </Modal>
         </div>
         <div id='sidebar'>
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
