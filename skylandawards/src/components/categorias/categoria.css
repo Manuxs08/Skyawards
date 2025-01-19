@@ -22,6 +22,7 @@
 
 .img-cat{
     width: 280px;
+    cursor: pointer;
 }
 
 .btn-votar{

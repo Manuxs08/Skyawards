@@ -238,8 +238,7 @@ const Categoria = () => {
             <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
             <Modal.Header closeButton className='modal-login'></Modal.Header>
             <Modal.Body className='modal-login'>
-                <h1>HOLA VAQUITA</h1>
-                <img src={img} alt="" />
+                <img src={image} alt="" />
             </Modal.Body>
             </Modal>
         </div>
