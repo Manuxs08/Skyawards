@@ -26,7 +26,8 @@ const Categoria = () => {
     const [nomsCat, setNomsCat] = useState([]);
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [showImage, setShowImage] = useState(false)
+    const [showImage, setShowImage] = useState(false);
+    const [image, setImage] = useState('')
     
     supabase.auth.onAuthStateChange(async (event) => {
         if (event == "SIGNED_IN"){
@@ -140,18 +141,8 @@ const Categoria = () => {
     };
 
     const viewImage = (img) => {
-        setShowImage(true)
-        return(
-            <div>
-            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
-            <Modal.Header closeButton className='modal-login'></Modal.Header>
-            <Modal.Body className='modal-login'>
-                <h1>HOLA VAQUITA</h1>
-                <img src={img} alt="" />
-            </Modal.Body>
-        </Modal>
-        </div>
-        )
+        setShowImage(true);
+        setImage(img);
     }
 
     const getVotosNomCat = async (id) => {
@@ -243,6 +234,15 @@ const Categoria = () => {
             </Modal.Body>
         </Modal>
         </div>
+        <div>
+            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
+            <Modal.Header closeButton className='modal-login'></Modal.Header>
+            <Modal.Body className='modal-login'>
+                <h1>HOLA VAQUITA</h1>
+                <img src={img} alt="" />
+            </Modal.Body>
+            </Modal>
+        </div>
         <div id='sidebar'>
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
           <div id='sidebarBar'>
@@ -309,7 +309,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
-                                                        <img onClick={viewImage('/'+nom.imagen)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
+                                                        <img onClick={() => viewImage('/'+nom.imagen)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }
