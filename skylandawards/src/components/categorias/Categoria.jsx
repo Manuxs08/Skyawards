@@ -23,6 +23,7 @@ const Categoria = () => {
     });
     const [result, setResult] = useState(false)
     const [votos, setVotos] = useState([]);
+    const [nomsCat, setNomsCat] = useState([]);
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
     
@@ -106,13 +107,15 @@ const Categoria = () => {
                 axios.put(url+'/put/voto', voto)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
-                updateBtnVote(catID, nom.id);
+                getVotosNomCat();
+                /*updateBtnVote(catID, nom.id);*/
             })
             .catch(err => {
                 axios.post(url+'/post/voto', voto)
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
-                updateBtnVote(catID, nom.id);
+                getVotosNomCat();
+                /*updateBtnVote(catID, nom.id);*/
             })
         }else openModal();
     }
@@ -137,14 +140,43 @@ const Categoria = () => {
         .catch(err => console.log(err))
     };
 
+    const getVotosNomCat = async () => {
+        await axios.get(url+'/get/categorias').then(res=> {
+            const arr = [];
+            const arrCat = Array.of(res.data);
+            arrCat.map((cat) => {
+                axios.get((url+'/get/categorias/nominados/idCat'),{
+                    params:{
+                        idCategoria: cat.id
+                    }
+                }).then(res=>{
+                    const arrNomsCat = Array.of(res.data);
+                    arrNomsCat.map((nomCat) => {
+                        axios.get((url+'/get/voto/nomCat'),{
+                            params:{
+                                idNomCategoria: nomCat.id,
+                                idVotante: user.id
+                            }
+                        }).then(res => {
+                            arr[cat.id][nomCat.id] = 'btn-activeVote';
+                        }).catch(err => {
+                            arr[cat.id][nomCat.id] = '';
+                        })
+                    })
+                })
+            })
+            setNomsCat(arr);
+            console.log(nomsCat)
+        }).catch(err => console.log(err))
+    }
+
     const fetchVotos = async (usuarioID) => {
         await axios.get(url+`/get/votos`,{
             params:{
                 id: usuarioID
             }
         }).then(res => {
-            setVotos(res.data);
-            console.log(res.data)})
+            setVotos(res.data);})
         .catch(err => console.log(err))
     }
 
@@ -182,6 +214,7 @@ const Categoria = () => {
             })
         }
         getUserData();
+        getVotosNomCat();
     },[])
 
   return (
