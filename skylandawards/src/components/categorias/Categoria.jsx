@@ -26,6 +26,7 @@ const Categoria = () => {
     const [nomsCat, setNomsCat] = useState([]);
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showImage, setShowImage] = useState(false)
     
     supabase.auth.onAuthStateChange(async (event) => {
         if (event == "SIGNED_IN"){
@@ -62,39 +63,9 @@ const Categoria = () => {
         new Audio(audioSource).play();
     }
 
-    const getElementsByClassNameAsync = (classes) => {
-        new Promise(resolve => {
-            const getElements = () => {
-                const elements = document.getElementsByClassName(classes);
-                if(elements){
-                    resolve(elements)
-                }else{
-                    requestAnimationFrame(getElements)
-                }
-            };
-            getElements();
-        })
-    }
-
-    const getElementByIdAsync = (id) => {
-        new Promise(resolve => {
-            const getElement = () => {
-                const element = document.getElementById(id);
-                if(element){
-                    resolve(element)
-                }else{
-                    requestAnimationFrame(getElement)
-                }
-            };
-            getElement();
-        })
-    }
-
     const updateBtnVote = async (catID, nomID) => {
-        const btnsActiveVotes = getElementsByClassNameAsync(`btn-activeVote cat${catID}`);
-        console.log(btnsActiveVotes)
-        const btnVotar = getElementByIdAsync(`btn${nomID}`);
-        console.log(btnVotar)
+        const btnsActiveVotes = document.getElementsByClassName(` btn-activeVote cat${catID}`);
+        const btnVotar = document.getElementById(`btn${nomID}`);
 
         if(btnsActiveVotes.length > 0){
             for (let i = 0; i < btnsActiveVotes.length; i++) {
@@ -168,6 +139,21 @@ const Categoria = () => {
         .catch(err => console.log(err))
     };
 
+    const viewImage = (img) => {
+        setShowImage(true)
+        return(
+            <div>
+            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
+            <Modal.Header closeButton className='modal-login'></Modal.Header>
+            <Modal.Body className='modal-login'>
+                <h1>HOLA VAQUITA</h1>
+                <img src={img} alt="" />
+            </Modal.Body>
+        </Modal>
+        </div>
+        )
+    }
+
     const getVotosNomCat = async (id) => {
         await axios.get(url+'/get/categorias').then(res=> {
             const arr = [];
@@ -200,14 +186,13 @@ const Categoria = () => {
         }).catch(err => console.log(err))
     }
 
-    const fetchVotos = async () => {
+    const fetchVotos = async (usuarioID) => {
         await axios.get(url+`/get/votos`,{
             params:{
-                id: user.id
+                id: usuarioID
             }
         }).then(res => {
-            setVotos(res.data);
-        console.log(votos)})
+            setVotos(res.data);})
         .catch(err => console.log(err))
     }
 
@@ -233,9 +218,9 @@ const Categoria = () => {
                                 email: usuario.email
                             });
                         }
-                        fetchVotos()
+                        fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
-                        console.log(votosArr)
+                        console.log(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
                         })
@@ -324,7 +309,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
-                                                        <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
+                                                        <img onClick={viewImage('/'+nom.imagen)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }
