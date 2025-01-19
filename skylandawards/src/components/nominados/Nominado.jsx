@@ -61,7 +61,7 @@ const Nominado = () => {
       }
     }
 
-    const openModal = () => {setShowModal(true); console.log(avatarUrl)};
+    const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
     
     const signOutUser = async () => {
@@ -79,7 +79,6 @@ const Nominado = () => {
       const nominaciones = []
       await axios.get(url+'/get/nominados').then(res => {
         const noms = res.data;
-        console.log(noms)
         noms.map(async (nom)=>{
             await axios.get(url+'/get/nominados/count',{
                 params:{

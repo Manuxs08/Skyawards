@@ -177,7 +177,6 @@ const Categoria = () => {
         await axios.get(url+'/get/categorias').then(res=> {
             const arr = [];
             const arrCat = res.data;
-            console.log(arrCat);
             arrCat.map((cat) => {
                 axios.get((url+'/get/categorias/nominados/idCat'),{
                     params:{
@@ -239,7 +238,6 @@ const Categoria = () => {
                         }
                         fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
-                        console.log(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
                         })
