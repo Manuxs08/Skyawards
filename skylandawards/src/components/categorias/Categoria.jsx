@@ -165,7 +165,7 @@ const Categoria = () => {
                             arr[cat.id][nomCat.id] = '';
                         })
                     })
-                })
+                }).catch(err => console.log(err))
             })
             setNomsCat(arr);
             console.log(nomsCat)
@@ -284,7 +284,7 @@ const Categoria = () => {
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
                                                         <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
-                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
+                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id} ${nomsCat[cat.id][nom.id]}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }else{
                                                 return(
@@ -296,7 +296,7 @@ const Categoria = () => {
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
                                                         <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
-                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
+                                                        <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id} ${nomsCat[cat.id][nom.id]}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }
                                         }
