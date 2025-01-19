@@ -140,7 +140,7 @@ const Categoria = () => {
         .catch(err => console.log(err))
     };
 
-    const getVotosNomCat = async () => {
+    const getVotosNomCat = async (id) => {
         await axios.get(url+'/get/categorias').then(res=> {
             const arr = [];
             const arrCat = res.data;
@@ -157,7 +157,7 @@ const Categoria = () => {
                         axios.get((url+'/get/voto/nomCat'),{
                             params:{
                                 idNomCategoria: nomCat.id,
-                                idVotante: user.id
+                                idVotante: id
                             }
                         }).then(res => {
                             arr[cat.id][nomCat.id] = 'btn-activeVote';
@@ -205,7 +205,7 @@ const Categoria = () => {
                             });
                         }
                         fetchVotos(usuario.id)
-                        getVotosNomCat();
+                        getVotosNomCat(usuario.id);
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
