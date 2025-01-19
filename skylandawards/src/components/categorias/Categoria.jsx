@@ -142,18 +142,12 @@ const Categoria = () => {
         .catch(err => console.log(err))
     };
 
+    const chagenImg = (img) => {
+        setImage(img);
+    }
     const viewImage = async (img) => {
         openImage()
-        return(
-            <div>
-            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
-            <Modal.Header closeButton className='modal-login'></Modal.Header>
-            <Modal.Body className='modal-login'>
-                <img src={img} alt="" />
-            </Modal.Body>
-            </Modal>
-            </div>
-        )
+        chagenImg(img)
     }
 
     const getVotosNomCat = async (id) => {
@@ -244,6 +238,14 @@ const Categoria = () => {
                 <Login supabase={supabase}></Login>
             </Modal.Body>
         </Modal>
+        </div>
+        <div>
+            <Modal show={showImage} onHide={setShowImage(false)} backdrop="static" centered>
+            <Modal.Header closeButton className='modal-login'></Modal.Header>
+            <Modal.Body className='modal-login'>
+                <img src={image} alt="" />
+            </Modal.Body>
+            </Modal>
         </div>
         <div id='sidebar'>
           <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
