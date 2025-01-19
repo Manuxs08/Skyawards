@@ -203,7 +203,7 @@ const Categoria = () => {
                             });
                         }
                         fetchVotos(usuario.id)
-                        const votosArr = votos
+                        const votosArr = Array.of(votos)
                         console.log(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
