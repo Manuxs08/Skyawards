@@ -23,10 +23,7 @@ const Categoria = () => {
     });
     const [result, setResult] = useState(false)
     const [votos, setVotos] = useState([]);
-    const [nomsCat, setNomsCat] = useState([
-        [0,1,2,3],
-        [4,5,6,7]
-    ]);
+    const [nomsCat, setNomsCat] = useState([]);
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
     
@@ -207,6 +204,7 @@ const Categoria = () => {
                         }
                         fetchVotos(usuario.id)
                         const votosArr = votos
+                        console.log(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
                         })
@@ -217,7 +215,6 @@ const Categoria = () => {
             })
         }
         getUserData();
-        console.log(nomsCat[0][3])
     },[])
 
   return (
