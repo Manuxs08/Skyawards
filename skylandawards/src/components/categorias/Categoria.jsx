@@ -200,10 +200,10 @@ const Categoria = () => {
         }).catch(err => console.log(err))
     }
 
-    const fetchVotos = async (usuarioID) => {
+    const fetchVotos = async () => {
         await axios.get(url+`/get/votos`,{
             params:{
-                id: usuarioID
+                id: user.id
             }
         }).then(res => {
             setVotos(res.data);
@@ -233,7 +233,7 @@ const Categoria = () => {
                                 email: usuario.email
                             });
                         }
-                        fetchVotos(usuario.id)
+                        fetchVotos()
                         const votosArr = Array.of(votos)
                         console.log(votosArr)
                         votosArr.map((voto)=>{
