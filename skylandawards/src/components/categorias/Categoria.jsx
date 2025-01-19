@@ -62,9 +62,37 @@ const Categoria = () => {
         new Audio(audioSource).play();
     }
 
+    const getElementsByClassNameAsync = (classes) => {
+        new Promise(resolve => {
+            const getElements = () => {
+                const elements = document.getElementsByClassName(classes);
+                if(elements){
+                    resolve(elements)
+                }else{
+                    requestAnimationFrame(getElements)
+                }
+            };
+            getElements();
+        })
+    }
+
+    const getElementByIdAsync = (id) => {
+        new Promise(resolve => {
+            const getElement = () => {
+                const element = document.getElementById(id);
+                if(elements){
+                    resolve(element)
+                }else{
+                    requestAnimationFrame(getElement)
+                }
+            };
+            getElement();
+        })
+    }
+
     const updateBtnVote = async (catID, nomID) => {
-        const btnsActiveVotes = document.getElementsByClassName(` btn-activeVote cat${catID}`);
-        const btnVotar = document.getElementById(`btn${nomID}`);
+        const btnsActiveVotes = getElementsByClassNameAsync(`btn-activeVote cat${catID}`);
+        const btnVotar = getElementByIdAsync(`btn${nomID}`);
 
         if(btnsActiveVotes.length > 0){
             for (let i = 0; i < btnsActiveVotes.length; i++) {
@@ -204,7 +232,7 @@ const Categoria = () => {
                         }
                         fetchVotos(usuario.id)
                         const votosArr = Array.of(votos)
-                        console.log(votos)
+                        console.log(votosArr)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
                         })
