@@ -205,6 +205,7 @@ const Categoria = () => {
                             });
                         }
                         fetchVotos(usuario.id)
+                        getVotosNomCat();
                         const votosArr = Array.of(votos)
                         votosArr.map((voto)=>{
                             updateBtnVote(voto.idCategoria, voto.idNomCategoria)
@@ -216,7 +217,6 @@ const Categoria = () => {
             })
         }
         getUserData();
-        getVotosNomCat();
     },[])
 
   return (
