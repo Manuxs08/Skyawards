@@ -138,7 +138,7 @@ const Inicio = () => {
             
             <br />
             <motion.img variants={gridElementVariants} id='img-trofeo' style={{width:'256px'}} src="/trofeo.png" alt="" /><br /><br />
-            <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition}>
+            <motion.div style={{marginBottom:'200px'}} variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition}>
             <h1 style={{fontSize:'70px', marginBottom:'64px'}}>Bienvenido a los Skyland Awards</h1>
             <p style={{
                 fontSize:'24px',
@@ -148,13 +148,11 @@ const Inicio = () => {
                 }}>Esta es la pagina oficial en donde podras votar en una amplia variedad de categorias que 
               recopilan lo mas relevante que ha acontecido durante el año 2024 dentro del servidor</p>
             <a className='btn-votar' style={{
-                marginBottom: '288px',
                 fontSize:'30px',
                 textDecoration:'none',
-                padding: '1px 8px'
+                padding: '8px 28px',
             }} href="/categoria">Votar aqui</a>
             </motion.div>
-
             <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} style={{
                 display:'flex',
                 justifyContent:'center',
