@@ -1,13 +1,14 @@
 import React from 'react'
 import './categoria.css'
 import '/src/general.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Login from '../login/Login'
 import { supabase } from '../../supabaseClient'
 import axios from 'axios'
+import {motion} from 'framer-motion'
 
 const Categoria = () => {
     const fechaDia = new Date().getDate();
@@ -27,7 +28,29 @@ const Categoria = () => {
     const [isLogged, setIsLogged] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showImage, setShowImage] = useState(false);
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState('');
+  
+    const gridContainerVariants = {
+      hidden: {
+        opacity: 0
+        }, 
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.25
+        }
+      }
+    }
+  
+    const gridElementVariants = {
+      hidden: {opacity: 0, y: 70},
+      show: {opacity: 1, y: 0}
+    }
+  
+    const gridElementTransition = {
+      duration: 0.5,
+      delay: 0.25
+    }
     
     supabase.auth.onAuthStateChange(async (event) => {
         if (event == "SIGNED_IN"){
@@ -227,7 +250,6 @@ const Categoria = () => {
         }
         getUserData();
     },[])
-
   return (
     <div id='content'>
         <div>
@@ -270,10 +292,10 @@ const Categoria = () => {
         </div>
         <div id='main-cat'>
             <br />
-            <div style={{marginBottom:'40px', fontSize:'30px'}}>Aqui podras votar a criterio propio en cada una de las categorias seleccionadas</div>
-            <div>
+            <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} style={{marginBottom:'40px', fontSize:'30px'}}>Aqui podras votar a criterio propio en cada una de las categorias seleccionadas</motion.div>
+            <motion.div variants={gridContainerVariants}>
                 {categorias.map((cat, index)=>
-                    <div className='categoria'>
+                    <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} className='categoria'>
                         <h1 key={`categoria${index}`} style={{
                             marginTop:'40px',
                             marginBottom:'40px',
@@ -285,7 +307,7 @@ const Categoria = () => {
                                         if(nom.idCategoria == cat.id){
                                             if(cat.id == 9){
                                                 return(
-                                                    <div key={`nomCat${index}`} style={{
+                                                    <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} key={`nomCat${index}`} style={{
                                                         display:'flex',
                                                         flexDirection:'column',
                                                         justifyContent:'center',
@@ -294,10 +316,10 @@ const Categoria = () => {
                                                         <h2>{nom.nombre}</h2>
                                                         <img onClick={()=>playAudio(nom.id)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
-                                                    </div>);
+                                                    </motion.div>);
                                             }else{
                                                 return(
-                                                    <div key={`nomCat${index}`} style={{
+                                                    <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} key={`nomCat${index}`} style={{
                                                         display:'flex',
                                                         flexDirection:'column',
                                                         justifyContent:'center',
@@ -306,15 +328,15 @@ const Categoria = () => {
                                                         <h2>{nom.nombre}</h2>
                                                         <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
-                                                    </div>);
+                                                    </motion.div>);
                                             }
                                         }
                                     }
                                 )}
                         </div><br /><br />
-                    </div>
+                    </motion.div>
                 )}
-            </div>
+            </motion.div>
         </div><br />
     </div>
   )

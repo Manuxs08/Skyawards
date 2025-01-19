@@ -1,12 +1,13 @@
 import React from 'react'
 import './inicio.css'
 import '/src/general.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Login from '../login/Login'
 import { supabase } from '../../supabaseClient'
+import {motion} from 'framer-motion'
 
 const Inicio = () => {
   const fechaDia = new Date().getDate();
@@ -20,6 +21,28 @@ const Inicio = () => {
   const [result, setResult] = useState(false)
   const [isLogged, setIsLogged] = useState(false)
   const [showModal, setShowModal] = useState(false)
+
+  const gridContainerVariants = {
+    hidden: {
+      opacity: 0
+      }, 
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.25
+      }
+    }
+  }
+
+  const gridElementVariants = {
+    hidden: {opacity: 0, y: 70},
+    show: {opacity: 1, y: 0}
+  }
+
+  const gridElementTransition = {
+    duration: 0.5,
+    delay: 0.25
+  }
 
   supabase.auth.onAuthStateChange(async (event) => {
           if (event == "SIGNED_IN"){
@@ -69,6 +92,7 @@ const Inicio = () => {
       getUserData();
       showResults();
    },[])
+
   return (
     <div id='content'>
         <div>
@@ -108,9 +132,13 @@ const Inicio = () => {
             </DropdownButton>}
           </div>
         </div>
-        <div id='main-inicio'>
+        <motion.div id='main-inicio' variants={gridContainerVariants}
+              initial="hidden"
+              animate="show">
+            
             <br />
-            <img id='img-trofeo' style={{width:'256px'}} src="/trofeo.png" alt="" /><br /><br />
+            <motion.img variants={gridElementVariants} id='img-trofeo' style={{width:'256px'}} src="/trofeo.png" alt="" /><br /><br />
+            <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition}>
             <h1 style={{fontSize:'70px', marginBottom:'64px'}}>Bienvenido a los Skyland Awards</h1>
             <p style={{
                 fontSize:'24px',
@@ -125,8 +153,9 @@ const Inicio = () => {
                 textDecoration:'none',
                 padding: '1px 8px'
             }} href="/categoria">Votar aqui</a>
+            </motion.div>
 
-            <div style={{
+            <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} style={{
                 display:'flex',
                 justifyContent:'center',
                 alignItems:'center'
@@ -151,8 +180,8 @@ const Inicio = () => {
                   <img style={{aspectRatio:'16 / 9'}} src="/inicio7.jpg" alt="" />
                 </div>
               </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Login from '../login/Login'
 import { supabase } from '../../supabaseClient'
+import {motion} from 'framer-motion'
 
 const Nominado = () => {
     const fechaDia = new Date().getDate();
@@ -24,6 +25,28 @@ const Nominado = () => {
     const [result, setResult] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
     const [showModal, setShowModal] = useState(false)
+
+    const gridContainerVariants = {
+      hidden: {
+        opacity: 0
+        }, 
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.25
+        }
+      }
+    }
+  
+    const gridElementVariants = {
+      hidden: {opacity: 0, y: 70},
+      show: {opacity: 1, y: 0}
+    }
+  
+    const gridElementTransition = {
+      duration: 0.5,
+      delay: 0.25
+    }
     
     supabase.auth.onAuthStateChange(async (event) => {
             if (event == "SIGNED_IN"){
@@ -143,9 +166,9 @@ const Nominado = () => {
             </DropdownButton>}
           </div>
         </div><br /><br /><br />
-        <div id='main-nom' style={{marginLeft:'40px',marginRight:'40px'}}>
+        <motion.div variants={gridContainerVariants} id='main-nom' style={{marginLeft:'40px',marginRight:'40px'}}>
             {nominados.map((nominado, index) =>
-                <div key={`nom${index}`} style={{
+                <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} key={`nom${index}`} style={{
                     display:'flex',
                     flexDirection:'column',
                     alignItems:'center'
@@ -153,9 +176,9 @@ const Nominado = () => {
                     <img className='img-nom' src={`/${nominado.imagen}`} alt={nominado.imagen} />
                     <h1>{nominado.nombre}</h1>
                     <h2>{nominaciones[index] != undefined ? `${nominaciones[index]} nominaciones` : ''}</h2>
-                </div>
+                </motion.div>
             )}
-        </div><br /><br /><br />
+        </motion.div><br /><br /><br />
     </div>
   )
 }
