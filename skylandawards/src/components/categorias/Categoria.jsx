@@ -141,13 +141,12 @@ const Categoria = () => {
             setCategorias(res.data);})
         .catch(err => console.log(err))
     };
-
-    const chagenImg = (img) => {
-        setImage(img);
-    }
+    
     const viewImage = async (img) => {
         openImage()
-        chagenImg(img)
+        const changeImg = () => {
+            setImage(img);
+        }
     }
 
     const getVotosNomCat = async (id) => {
@@ -313,7 +312,7 @@ const Categoria = () => {
                                                         alignItems:'center'
                                                     }}>
                                                         <h2>{nom.nombre}</h2>
-                                                        <img onClick={() => viewImage('/'+nom.imagen)} className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
+                                                        <img className='img-cat' src={'/'+nom.imagen} alt={nom.imagen} />
                                                         <div id={`btn${nom.id}`} className={`btn-votar cat${cat.id}`} onClick={() => handleVote(cat.id, nom)}>Votar</div>
                                                     </div>);
                                             }
