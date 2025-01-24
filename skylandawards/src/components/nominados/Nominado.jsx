@@ -4,11 +4,10 @@ import './nominado.css'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Login from '../login/Login'
 import { supabase } from '../../supabaseClient'
 import {motion} from 'framer-motion'
+import NavbarPC from '../navbarPC/NavbarPC'
 
 const Nominado = () => {
     const fechaDia = new Date().getDate();
@@ -56,7 +55,7 @@ const Nominado = () => {
     })
 
     const showResults = () => {
-      if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 24){
+      if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 25){
         setResult(true);
       }
     }
@@ -135,36 +134,8 @@ const Nominado = () => {
             </Modal.Body>
         </Modal>
         </div>
-        <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
-          <div id='sidebarBar'>
-            <h3><a href="/categoria">Categorias</a></h3>
-            <h3><a href="/nominado">Nominados</a></h3>
-            {result?
-              <h3><a href="/resultado">Resultados</a></h3>:
-              null
-            }
-            {isLogged?
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-                borderRadius:'9999px'
-            }} src={user.icon} alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={signOutUser}>Cerrar Sesion</Dropdown.Item>
-            </DropdownButton>:
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-                borderRadius:'9999px'
-            }} src="/userIcon.svg" alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
-            </DropdownButton>}
-          </div>
-        </div><br /><br /><br />
+        <NavbarPC result={result} isLogged={isLogged} user={user} signOutUser={() => signOutUser()} openModal={() => openModal()}/>
+        <br /><br /><br />
         <motion.div variants={gridContainerVariants} id='main-nom' style={{marginLeft:'40px',marginRight:'40px'}}>
             {nominados.map((nominado, index) =>
                 <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} key={`nom${index}`} style={{

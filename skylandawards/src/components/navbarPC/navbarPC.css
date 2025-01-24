@@ -1,0 +1,40 @@
+#navbar{
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 17, 9, .99);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    backdrop-filter: blur(10px);
+}
+
+#navbarBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+}
+
+
+#navbarBar a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+#userHandler{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    transform: skewX(0deg);
+}
+
+#userHandlerItem{
+    background: rgb(0, 17, 9);
+}

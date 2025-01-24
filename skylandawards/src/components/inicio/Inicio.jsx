@@ -3,11 +3,11 @@ import './inicio.css'
 import '/src/general.css'
 import { useState, useEffect} from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Login from '../login/Login'
 import { supabase } from '../../supabaseClient'
 import {motion} from 'framer-motion'
+import NavbarPC from '../navbarPC/NavbarPC'
+import NavbarMovil from '../navbarMovil/NavbarMovil'
 
 const Inicio = () => {
   const fechaDia = new Date().getDate();
@@ -52,7 +52,7 @@ const Inicio = () => {
   })
 
   const showResults = () => {
-    if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 24){
+    if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 25){
       setResult(true);
     }
   }
@@ -103,35 +103,7 @@ const Inicio = () => {
             </Modal.Body>
         </Modal>
         </div>
-        <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
-          <div id='sidebarBar'>
-            <h3><a href="/categoria">Categorias</a></h3>
-            <h3><a href="/nominado">Nominados</a></h3>
-            {result?
-            <h3><a href="/resultado">Resultados</a></h3>:
-            null
-            }
-            {isLogged?
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-                borderRadius:'9999px'
-            }} src={user.icon} alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={signOutUser}>Cerrar Sesion</Dropdown.Item>
-            </DropdownButton>:
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-            }} src="/userIcon.svg" alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
-            </DropdownButton>}
-          </div>
-        </div>
+        <NavbarPC result={result} isLogged={isLogged} user={user} signOutUser={() => signOutUser()} openModal={() => openModal()}/>
         <motion.div id='main-inicio' variants={gridContainerVariants}
               initial="hidden"
               animate="show">
@@ -143,8 +115,8 @@ const Inicio = () => {
             <p style={{
                 fontSize:'24px',
                 lineHeight:'40px',
-                marginLeft:'90px',
-                marginRight:'90px'
+                marginLeft:'10%',
+                marginRight:'10%'
                 }}>Esta es la pagina oficial en donde podras votar en una amplia variedad de categorias que 
               recopilan lo mas relevante que ha acontecido durante el año 2024 dentro del servidor</p>
             <a className='btn-votar' style={{
@@ -153,14 +125,10 @@ const Inicio = () => {
                 padding: '8px 28px',
             }} href="/categoria">Votar aqui</a>
             </motion.div>
-            <motion.div variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition} style={{
-                display:'flex',
-                justifyContent:'center',
-                alignItems:'center'
-            }}>
+            <motion.div id='container-lore' variants={gridElementVariants} initial="hidden" animate="show" transition={gridElementTransition}>
               <div style={{width:'600px'}}>
                 <h1 style={{fontSize:'70px', marginBottom:'55px'}}>Que es Skyland?</h1>
-                <p style={{lineHeight:'40px', marginRight:'20px', marginLeft:'20px', fontSize:'24px', marginBottom:'48px'}}>
+                <p style={{lineHeight:'40px', marginRight:'8%', marginLeft:'8%', fontSize:'24px', marginBottom:'48px'}}>
                   Skyland nació como un pequeño pueblo dentro de un servidor de Minecraft. Con el pasar del
                   tiempo, más miembros se han ido integrando a este pueblo lo que llevo a la creación de un servidor de discord en donde todos
                   los integrantes puedan compartir sus experiencias dentro del servidor. Sin embargo, con el pasar del tiempo y la caída
@@ -169,13 +137,13 @@ const Inicio = () => {
               </div>
               <div id='slider'>
                 <div id='slider-track'>
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio1.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio2.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio3.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio4.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio5.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio6.jpg" alt="" />
-                  <img style={{aspectRatio:'16 / 9'}} src="/inicio7.jpg" alt="" />
+                  <img src="/inicio1.jpg" alt="" />
+                  <img src="/inicio2.jpg" alt="" />
+                  <img src="/inicio3.jpg" alt="" />
+                  <img src="/inicio4.jpg" alt="" />
+                  <img src="/inicio5.jpg" alt="" />
+                  <img src="/inicio6.jpg" alt="" />
+                  <img src="/inicio7.jpg" alt="" />
                 </div>
               </div>
             </motion.div>

@@ -9,8 +9,10 @@ import Login from '../login/Login';
 import { supabase } from '../../supabaseClient';
 import axios from 'axios';
 import GraficoResultado from '../graficoResultado/graficoResultado'
+import NavbarPC from '../navbarPC/NavbarPC'
 
 const Resultado = () => {
+    const result = true;
     const [votosCant, setVotosCant] = useState([]);
     const [nominadosNombres, setNominadosNombres] = useState([]);
     const url = 'https://overflowing-liberation-production.up.railway.app';
@@ -74,8 +76,8 @@ const Resultado = () => {
                 votos[cat.id] = arr;
             }).catch(err => console.log(err))
         })
-        setVotosCant(votos)
-        console.log(votos)
+        setVotosCant(votos);
+        console.log(votosCant)
     }
 
     const fetchNomCatNames = async () => {
@@ -140,32 +142,7 @@ const Resultado = () => {
             </Modal.Body>
         </Modal>
         </div>
-        <div id='sidebar'>
-          <a href="/" style={{marginLeft:'50px'}}><img src="/skyawards-logo.png" alt="" id='logo' /></a>
-          <div id='sidebarBar'>
-            <h3><a href="/categoria">Categorias</a></h3>
-            <h3><a href="/nominado">Nominados</a></h3>
-            {isLogged?
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-                borderRadius:'9999px'
-            }} src={user.icon} alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={signOutUser}>Cerrar Sesion</Dropdown.Item>
-            </DropdownButton>:
-            <DropdownButton id='userHandler'
-            style={{marginRight:'16px'}}
-            title={<img style={{
-                width:'64px',
-                color:'whitesmoke',
-                borderRadius:'9999px'
-            }} src="/userIcon.svg" alt="" />}>
-                <Dropdown.Item id='userHandlerItem' onClick={openModal}>Iniciar Sesion</Dropdown.Item>
-            </DropdownButton>}
-          </div>
-        </div><br />
+        <NavbarPC result={result} isLogged={isLogged} user={user} signOutUser={() => signOutUser()} openModal={() => openModal()}/>
         <div id='main-resultado'>
             {categorias.map((cat) =>
                 <div key={`cat${cat.id}`} style={{

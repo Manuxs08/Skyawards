@@ -60,3 +60,23 @@
     display: flex;
     width: calc(60px * 14);
 }
+
+#container-lore{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 300px) {
+    #container-lore{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #container-lore{
+        flex-direction: row;
+    }
+}
