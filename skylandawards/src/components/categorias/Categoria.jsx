@@ -57,12 +57,6 @@ const Categoria = () => {
             setShowModal(false);
         }
     })
-
-    const showResults = () => {
-        if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 25){
-          setResult(true);
-        }
-    }
     
     const playAudio = (id) => {
         let audioSource;
@@ -216,7 +210,6 @@ const Categoria = () => {
     useEffect(()=>{
         fetchCategorias();
         fetchNominadosCategoria();
-        showResults();
         async function getUserData(){
             await supabase.auth.getUser().then((value) => {
                 if (value.data?.user) {
@@ -311,7 +304,7 @@ const Categoria = () => {
                                         }
                                     }
                                 )}
-                        </div><br /><br />
+                        </div>
                     </motion.div>
                 )}
             </div>

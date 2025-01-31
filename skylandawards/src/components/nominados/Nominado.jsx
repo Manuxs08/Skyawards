@@ -54,12 +54,6 @@ const Nominado = () => {
             }
     })
 
-    const showResults = () => {
-      if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 25){
-        setResult(true);
-      }
-    }
-
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
     
@@ -122,7 +116,6 @@ const Nominado = () => {
       getUserData();
       fetchNominados();
       fetchNominadosCount();
-      showResults();
     },[])
   return (
     <div id='content'>

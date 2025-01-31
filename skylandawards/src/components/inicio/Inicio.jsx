@@ -51,12 +51,6 @@ const Inicio = () => {
           }
   })
 
-  const showResults = () => {
-    if(fechaAnio == 2025 && fechaMes >= 0 && fechaDia >= 25){
-      setResult(true);
-    }
-  }
-
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
   
@@ -90,7 +84,6 @@ const Inicio = () => {
         })
       }
       getUserData();
-      showResults();
    },[])
 
   return (
